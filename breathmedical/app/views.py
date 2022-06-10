@@ -19,8 +19,6 @@ class PatientView(TemplateView):
     patient_id = None
 
     def dispatch(self, request, *args, **kwargs):
-        # print(kwargs, "\n\n")
-        # print(args, "\n\n")
         self.patient_id = kwargs.pop('patient_id', None)
         if self.patient_id != 1:
             raise PermissionDenied("Not allowed. This user id doesn't exist")
