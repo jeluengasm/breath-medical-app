@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*kw^w_-8p7z2v^#wzvcp$2w6t$*w!+as8s51j$-qi_e^nzpk7+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['breath-medical-app.herokuapp.com/', 'localhost']
 
 
 # Application definition
