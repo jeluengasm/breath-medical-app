@@ -7,8 +7,14 @@ app_name = 'app'
 
 urlpatterns = [
     path(
-        '',
+        'home/',
         views.HomeView.as_view(),
+        name='home'
+    ),
+
+    path(
+        'patient/<int:patient_id>',
+        views.PatientView.as_view(),
         name='home'
     ),
 ]
