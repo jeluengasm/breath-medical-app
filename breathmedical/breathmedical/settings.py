@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-*kw^w_-8p7z2v^#wzvcp$2w6t$*w!+as8s51j$-qi_e^nzpk7+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['breath-medical-app.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'breathmedical.urls'
