@@ -28,3 +28,13 @@ class PatientView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["patient_id"] = self.patient_id
         return context
+
+class UserLoginView(TemplateView):
+    template_name = 'app/login_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

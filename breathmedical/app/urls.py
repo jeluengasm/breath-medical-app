@@ -15,7 +15,13 @@ urlpatterns = [
     path(
         'patient/<int:patient_id>',
         views.PatientView.as_view(),
-        name='home'
+        name='patient'
+    ),
+
+    path(
+        'login/',
+        views.UserLoginView.as_view(),
+        name='login'
     ),
 ]
 
