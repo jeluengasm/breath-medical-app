@@ -23,6 +23,11 @@ urlpatterns = [
         views.UserLoginView.as_view(),
         name='login'
     ),
+    path(
+        'register/',
+        views.UserRegisterView.as_view(),
+        name='register'
+    ),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
