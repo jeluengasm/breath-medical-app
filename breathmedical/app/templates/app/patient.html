@@ -178,11 +178,14 @@
                         <h6>Wav format</h6>
                       </div>
                       <div class="col-md-4">
-                        <button class="btn btn-sm btn-secondary">
-                          <div class="icon">
-                            <i class="bi bi-upload"></i>
-                          </div>
-                        </button>
+                        <form action="{{ BASE_DIR }}{% url 'app:home' %}" method="post">
+                          {% csrf_token %}
+                          <button class="btn btn-sm btn-secondary" type="submit">
+                            <div class="icon">
+                              <i class="bi bi-upload"></i>
+                            </div>
+                          </button>
+                        </form>
                       </div>
                     </div>
                   </div>

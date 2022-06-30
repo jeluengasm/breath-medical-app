@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.core.exceptions import PermissionDenied
+from breathmedical import settings
 
 
 class HomeView(TemplateView):
@@ -27,6 +28,7 @@ class PatientView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["patient_id"] = self.patient_id
+        context["BASE_DIR"] = settings.BASE_DIR
         return context
 
 class UserLoginView(TemplateView):
