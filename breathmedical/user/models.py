@@ -12,6 +12,27 @@ class User(AbstractUser):
 
     email = models.EmailField(verbose_name='email address', unique=True)
 
+    birthday = models.DateField(verbose_name='birthday', null=True)
+
+    sex = models.CharField(
+        choices=(
+            ('M', 'Male'),
+            ('F', 'Female'),
+            ('I', 'Intersexual'),
+            ('N', 'No response'),
+        ),
+        verbose_name='sex',
+        max_length=11,
+        blank=True,
+    )
+
+    city = models.ForeignKey(
+        'app.City',
+        verbose_name='city',
+        on_delete=models.SET_NULL,
+        null=True
+    )
+
     phone_number = models.CharField(
         blank=True,
         max_length=15,
@@ -21,23 +42,21 @@ class User(AbstractUser):
         ],
     )
 
-    birthday = models.DateTimeField(
-        verbose_name='birthday',
-        default=timezone.now,
-    )
-
     legal_id_type = models.CharField(
-        max_length=3,
-        choices=(('CC', 'CC'), ('NIT', 'NIT')),
+        max_length=10,
+        choices=(
+            ('TI', 'TI'),
+            ('CC', 'CC'),
+            ('NIT', 'NIT'),
+            ('Pass', 'Passport'),
+        ),
         verbose_name='ID type',
         default='CC',
     )
 
     legal_id = models.CharField(
         max_length=10,
-        unique=True,
-        verbose_name='legal id',
-        default='',
+        verbose_name='legal ID',
     )
 
     address = models.CharField(
@@ -50,14 +69,36 @@ class User(AbstractUser):
         upload_to='uploads/',
         max_length=100,
         verbose_name='photo',
-        blank=True
+        null=True,
     )
 
     created_at = models.DateTimeField(
         verbose_name='created at',
         default=timezone.now,
     )
-    
+
+    blood_type = models.CharField(
+        choices=(
+            ('A', 'A'),
+            ('B', 'B'),
+            ('AB', 'AB'),
+            ('O', 'O'),
+        ),
+        max_length=2,
+        verbose_name='blood type',
+        default='A',
+    )
+
+    rh_factor = models.CharField(
+        choices=(
+            ('+', '+'),
+            ('-', '-'),
+        ),
+        max_length=1,
+        verbose_name='rh factor',
+        default='+'
+    )
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -68,12 +109,20 @@ class User(AbstractUser):
         return '{} {}'.format(self.first_name, self.last_name)
 
     def __str__(self):
-        return self.email
+        return self.get_full_name
 
 
 class Doctor(User):
+    medical_areas = models.ManyToManyField('app.MedicalArea',verbose_name='medical areas')
+
+    role = models.CharField(
+        max_length=30,
+        verbose_name='role',
+        default='',
+    )
+
     def __str__(self):
-        return self.get_full_name()
+        return f'Dr. {self.get_full_name()}'
 
     class Meta:
         ordering = ['-id']
@@ -82,8 +131,6 @@ class Doctor(User):
 
 
 class Patient(User):
-    attending_doctor = models.ForeignKey(Doctor, verbose_name='doctor', on_delete=models.SET_NULL, null=True)
-
     def __str__(self):
         return self.get_full_name()
 
