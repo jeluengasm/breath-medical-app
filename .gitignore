@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 breathmedical/static/
+breathmedical/uploads/
+breathmedical/app/processing/

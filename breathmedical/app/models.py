@@ -1,4 +1,5 @@
-from ssl import create_default_context
+from sunau import AUDIO_FILE_ENCODING_ADPCM_G721
+from tabnanny import verbose
 from django.db import models
 from django.utils import timezone
 
@@ -76,7 +77,7 @@ class City(models.Model):
         null=True,
     )
 
-    population = models.PositiveIntegerField(default=0, verbose_name='population')
+    population = models.PositiveIntegerField(verbose_name='population', null=True)
 
     class Meta:
         verbose_name = 'city'
@@ -93,14 +94,14 @@ class City(models.Model):
 class MedicalArea(models.Model):
     title = models.CharField(max_length=100)
 
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, default='')
 
     class Meta:
         verbose_name = 'medical area'
         verbose_name_plural = 'medical areas'
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse('MedicalArea_detail',
@@ -125,11 +126,29 @@ class Country(models.Model):
 
 
 class Audio(models.Model):
-    instrument = models.ForeignKey('app.MedicalInstrument', verbose_name='instrument', on_delete=models.SET_NULL, null=True)
+    audio_filename = models.CharField(
+        verbose_name='audio filename',
+        blank=True,
+        max_length=50,
+    )
+    
+    instrument = models.ForeignKey(
+        'app.MedicalInstrument',
+        verbose_name='instrument',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
-    city = models.ForeignKey('app.City', verbose_name='city', on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey(
+        'app.City',
+        verbose_name='city',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
-    location = models.CharField(
+    chest_location = models.CharField(
         choices=(
             ('Tc', 'Trachea'),
             ('Al', 'Anterior left'),
@@ -147,11 +166,16 @@ class Audio(models.Model):
 
     comments = models.TextField(max_length=255, blank=True, verbose_name='comments')
 
-    user_history = models.ForeignKey('app.UserHistory', verbose_name='user history', on_delete=models.SET_NULL, null=True)
+    user_history = models.ForeignKey(
+        'app.UserHistory',
+        verbose_name='user history',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
 
     file = models.FileField(
-        upload_to='uploads/audio/%Y/%m/%d/',
-        # max_length=100, #TODO
+        upload_to='audio/%Y/%m/%d/',
+        max_length=2000, #TODO
         verbose_name='audio file',
         blank=True,
     )
@@ -161,7 +185,7 @@ class Audio(models.Model):
         verbose_name_plural = 'audios'
 
     def __str__(self):
-        return self.name
+        return self.audio_filename
 
     def get_absolute_url(self):
         return reverse('audio_detail',
@@ -182,15 +206,12 @@ class Cycle(models.Model):
         max_length=10,
     ) #TODO
 
-    interval = models.CharField(
-        max_length=50,
-        verbose_name='interval',
-        validators=[
-            RegexValidator(
-                r'([0-5]?\d):[0-5]\d\s?-\s?([0-5]?\d):[0-5]\d',
-                message='Write intervals in format: MM:SS - MM:SS'
-            ),
-        ],
+    begin_cycle = models.FloatField(
+        verbose_name='begin cycle', null=True
+    )
+
+    end_cycle = models.FloatField(
+        verbose_name='end cycle', null=True
     )
     
     status = models.CharField(
@@ -214,12 +235,21 @@ class Cycle(models.Model):
 
     avg_spectre = models.FloatField(verbose_name='average spectre', null=True)
 
+    diagnosis = models.CharField(
+        max_length=100,
+        verbose_name='diagnosis',
+        blank=True,
+    )
+
     class Meta:
         verbose_name = 'cycle'
         verbose_name_plural = 'cycles'
 
     def __str__(self):
-        return self.name
+        return f'Cycle #{self.pk}'
+
+    def __repr__(self):
+        return f'Cycle #{self.pk}'
 
     def get_absolute_url(self):
         return reverse('cycle_detail',
@@ -243,7 +273,10 @@ class UserHistory(models.Model):
         verbose_name_plural = 'user\'s histories'
 
     def __str__(self):
-        return self.name
+        return f'User history #{self.id}'
+
+    def __repr__(self):
+        return f'User history #{self.id}'
 
     def get_absolute_url(self):
         return reverse('user_history_detail',

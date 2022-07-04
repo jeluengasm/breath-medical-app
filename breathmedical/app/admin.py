@@ -93,20 +93,22 @@ class HospitalAdmin(admin.ModelAdmin):
 class MedicalAreaAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Audio)
 class AudioAdmin(admin.ModelAdmin):
     list_display = (
+        'audio_filename',
         'user_history',
         'instrument',
         'city',
-        'location',
+        'chest_location',
         'mode',
         'comments',
     )
 
     list_filter = (
         'city',
-        'location',
+        'chest_location',
         'mode',
     )
 
@@ -115,11 +117,13 @@ class AudioAdmin(admin.ModelAdmin):
             None, 
                 {
                     "fields": (
+                        'audio_filename',
                         'user_history',
                         'instrument',
                         'city',
-                        'location',
+                        'chest_location',
                         'mode',
+                        'file',
                         'comments',
                     ),
                 }
@@ -150,7 +154,8 @@ class CycleAdmin(admin.ModelAdmin):
     list_display = (
         'audio',
         'numestdo',
-        'interval',
+        'begin_cycle',
+        'end_cycle',
         'status',
     )
 
@@ -165,8 +170,9 @@ class CycleAdmin(admin.ModelAdmin):
                 "fields": (
                     'audio',
                     'numestdo',
-                    'interval',
-                    'status',
+                    'begin_cycle',
+                    'end_cycle',
+                    'diagnosis',
                     'variance',
                     'range_cycle',
                     'sma_coarse',
@@ -202,6 +208,11 @@ class CycleAdmin(admin.ModelAdmin):
     # def has_delete_permission(self, request, obj):
     #     return False
 
+class AudioInline(admin.StackedInline):
+    model = Audio
+    extra = 0
+
+
 @admin.register(UserHistory)
 class UserHistoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -236,6 +247,8 @@ class UserHistoryAdmin(admin.ModelAdmin):
         'patient',
         'doctor',
     )
+
+    inlines = (AudioInline,)
 
 @admin.register(MedicalInstrument)
 class MedicalInstrumentAdmin(admin.ModelAdmin):
