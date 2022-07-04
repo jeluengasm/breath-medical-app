@@ -12,7 +12,7 @@ class User(AbstractUser):
 
     email = models.EmailField(verbose_name='email address', unique=True)
 
-    birthday = models.DateField(verbose_name='birthday', null=True)
+    age = models.FloatField(null=True, verbose_name='age')
 
     sex = models.CharField(
         choices=(
@@ -30,7 +30,8 @@ class User(AbstractUser):
         'app.City',
         verbose_name='city',
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True,
     )
 
     phone_number = models.CharField(
@@ -62,13 +63,14 @@ class User(AbstractUser):
     address = models.CharField(
         max_length=128,
         verbose_name='address',
-        default='',
+        blank=True,
     )
 
     photo = models.ImageField(
-        upload_to='uploads/',
+        upload_to='',
         max_length=100,
         verbose_name='photo',
+        blank=True,
         null=True,
     )
 
@@ -111,6 +113,9 @@ class User(AbstractUser):
     def __str__(self):
         return self.get_full_name
 
+    def __repr__(self):
+        return self.get_full_name
+
 
 class Doctor(User):
     medical_areas = models.ManyToManyField('app.MedicalArea',verbose_name='medical areas')
@@ -122,7 +127,7 @@ class Doctor(User):
     )
 
     def __str__(self):
-        return f'Dr. {self.get_full_name()}'
+        return f'Dr. {self.get_full_name}'
 
     class Meta:
         ordering = ['-id']
@@ -131,8 +136,17 @@ class Doctor(User):
 
 
 class Patient(User):
+    adult_bmi = models.PositiveSmallIntegerField(null=True, verbose_name='adult BMI')
+
+    child_height = models.PositiveSmallIntegerField(null=True, verbose_name='child weight')
+
+    child_weight = models.PositiveSmallIntegerField(null=True, verbose_name='child weight')
+
     def __str__(self):
-        return self.get_full_name()
+        return self.get_full_name
+
+    # def __repr__(self):
+    #     return self.get_full_name
 
     class Meta:
         ordering = ['-id']

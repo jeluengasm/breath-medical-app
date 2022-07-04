@@ -7,9 +7,6 @@ from .models import User, Patient, Doctor
 
 # @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    # add_form = UserCreationForm
-    # form = UserChangeForm
-    # model = User
 
     list_display = (
         'id',
@@ -108,9 +105,6 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Doctor)
 class DoctorAdmin(UserAdmin):
-    # add_form = UserCreationForm
-    # form = UserChangeForm
-    # model = User
 
     list_display = (
         'id',
@@ -125,7 +119,7 @@ class DoctorAdmin(UserAdmin):
 
     
     list_filter = (
-        'email',
+        'medical_areas',
         'is_staff',
         'is_active',
     )
@@ -173,6 +167,9 @@ class DoctorAdmin(UserAdmin):
                 'fields': (
                     ('first_name', 'last_name',),
                     ('legal_id_type', 'legal_id',),
+                    'password1',
+                    'password2',
+                    'age',
                     'address',
                     'city',
                     ('email','phone_number',),
@@ -215,9 +212,6 @@ class DoctorAdmin(UserAdmin):
 
 @admin.register(Patient)
 class PatientAdmin(UserAdmin):
-    # add_form = UserCreationForm
-    # form = UserChangeForm
-    # model = User
 
     list_display = (
         'id',
@@ -231,7 +225,6 @@ class PatientAdmin(UserAdmin):
 
     
     list_filter = (
-        'email',
         'is_staff',
         'is_active',
     )
@@ -243,6 +236,7 @@ class PatientAdmin(UserAdmin):
                 'fields': (
                     ('first_name', 'last_name',),
                     ('legal_id_type', 'legal_id',),
+                    'age',
                     'address',
                     'city',
                     ('email','phone_number',),
@@ -277,6 +271,9 @@ class PatientAdmin(UserAdmin):
                 'fields': (
                     ('first_name', 'last_name',),
                     ('legal_id_type', 'legal_id',),
+                    'password1',
+                    'password2',
+                    'age',
                     'address',
                     'city',
                     ('email','phone_number',),
