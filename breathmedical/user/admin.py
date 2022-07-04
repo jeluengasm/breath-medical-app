@@ -205,9 +205,13 @@ class DoctorAdmin(UserAdmin):
         'created_at',
     )
 
-    search_fields = ('email',)
+    search_fields = (
+        'email',
+        'first_name',
+        'last_name',
+        )
 
-    ordering = ('email',)
+    ordering = ('first_name',)
 
 
 @admin.register(Patient)
@@ -305,6 +309,10 @@ class PatientAdmin(UserAdmin):
         'created_at',
     )
 
-    search_fields = ('email',)
+    search_fields = (
+        'email',
+        'first_name',
+        'last_name',
+        )
 
-    ordering = ('email',)
+    ordering = ('first_name',)
