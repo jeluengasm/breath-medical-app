@@ -130,7 +130,4 @@ dmypy.json
 
 breathmedical/static/
 breathmedical/uploads/
-
-uploads/
-
 breathmedical/app/processing/
