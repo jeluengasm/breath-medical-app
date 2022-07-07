@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-1"></div>
+<div class="col-md-10 col-lg-10">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Patient ID</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        {% comment %}
+        <form action="{{ BASE_DIR }}{% url 'app:save' %}" method="post">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Save</button>
+        </form>
+        <form action="{{ BASE_DIR }}{% url 'app:home' %}" method="post">
+          <button type="submit" class="btn btn-sm btn-outline-secondary">Cancel</button>
+        </form>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p class="lead"> Audio001</p>
+    <h5 class="lead" style="text-align:center"> 12/07/2022</h5>
+    <div class="col-md-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">IMG1 + IMG2</h5>
+          <img src="{% static 'images/filtradoej.png' %}" width="820" height="180">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">IMG3</h5>
+          <img src="{% static 'images/ciclosej.png' %}" width="420" height="180">
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>ABOUT AUDIO</th>
+            </tr>
+            <tr>
+              <th>Acquisition mode</th>
+              <th>Reference Device</th>
+              <th>Duration</th>
+              <th>Ubication</th>
+              <th>b</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>sc</td>
+              <td>Meditron</td>
+              <td>2:12</td>
+              <td>Al</td>
+              <td>1b1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="form-label">Diagnosis</h5>
+          <hr class="featture-divider">
+          <textarea class="form-control" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

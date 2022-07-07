@@ -1,0 +1,139 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-1"></div>
+<div class="col-md-10 col-lg-10">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">EDA</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+    </div>
+  </div>
+  <hr class="featurre-divider">
+  <div class="row">
+    <p class="lead">Variables</p>
+    <div class="col-md-6">
+      <h5>About record (Respiratory cycle)</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Variables</th>
+              <th scope="col">Items</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" style="text-align: center;" rowspan="4">Instrument</th>
+              <td>Microphone (AKGC417L)</td>
+            </tr>
+            <tr>
+              <td>3M Littmann Classic II SE Stethoscope (LittC2SE)</td>
+            </tr>
+            <tr>
+              <td>3M Litmmann 3200 Electronic Stethoscope (Litt3200)</td>
+            </tr>
+            <tr>
+              <td>WelchAllyn Meditron Master
+                Elite Electronic Stethoscope</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: center;" rowspan="2">Acquisition Mode</th>
+              <td>Sequential/single channel (sc)</td>
+            </tr>
+            <tr>
+              <td>Simultaneous/multichannel (mc)</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: center;" rowspan="4">Status</th>
+              <td>Health (0)</td>
+            </tr>
+            <tr>
+              <td>Wheezing (1)</td>
+            </tr>
+            <tr>
+              <td>Crackle (2)</td>
+            </tr>
+            <tr>
+              <td>Twice (3)</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: center;" rowspan="2">B (Recording index)</th>
+              <td>1b1</td>
+            </tr>
+            <tr>
+              <td>1b2</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: center;" rowspan="7">Ubication</th>
+              <td>Trachea(Tc)</td>
+            </tr>
+            <tr>
+              <td>Anterior left (Al)</td>
+            </tr>
+            <tr>
+              <td>Anterior right (Ar)</td>
+            </tr>
+            <tr>
+              <td>Posterior left (Pl)</td>
+            </tr>
+            <tr>
+              <td>Posterior right (Pr)</td>
+            </tr>
+            <tr>
+              <td>Lateral left (Ll)</td>
+            </tr>
+            <tr>
+              <td>Lateral right (Lr)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h5>Other variables </h5>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Demographic info</th>
+              <th scope="col" class="table-secondary">Statistics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Patient identification</td>
+              <td class="table-secondary">Variance</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td class="table-secondary">Range</td>
+            </tr>
+            <tr>
+              <td>Sex</td>
+              <td class="table-secondary">SMA coarse</td>
+            </tr>
+            <tr>
+              <td>Adult BMI</td>
+              <td class="table-secondary">SMA fine</td>
+            </tr>
+            <tr>
+              <td>Child Weight (kg)</td>
+              <td class="table-secondary">Spectre AVG</td>
+            </tr>
+            <tr>
+              <td>Child Height (cm)</td>
+            </tr>
+            <tr>
+              <td class="table-warning">Diagnosis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

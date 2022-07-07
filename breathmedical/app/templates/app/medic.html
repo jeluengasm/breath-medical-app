@@ -1,0 +1,105 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-11">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-12 col-lg-11">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">News</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+        </div>
+      </div>
+      <h3 class="my-0 fw-normal">Good Morning, DR.Salazar!</h3>
+      <p class="lead"> "There is no exercise better for the heart than reaching down and lifting people up."</p>
+      <hr class="featurette-divider">
+      <form class="needs-validation" validate>
+        <div class="row g-3">
+          <div class="col-md-8">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="table-warning">
+                    <th>Warning patients</th>
+                  </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Jimena Díaz</td>
+                    <td>13 Aug 2014</td>
+                    <td>251-661-5332</td>
+                    <td>20</td>
+                    <td>
+                      <div class="input-group">
+                        <button onclick="location.href = 'Patientpage.html'" type="button"
+                          class="btn btn-sm btn-light">New appointment</button>
+                        <button onclick="location.href = 'Patientpage.html'" type="button"
+                          class="btn btn-sm btn-secondary">Last review</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jimena Díaz</td>
+                    <td>13 Aug 2014</td>
+                    <td>251-661-5332</td>
+                    <td>20</td>
+                    <td>
+                      <div class="input-group">
+                        <button class="btn btn-sm btn-light">New appointment</button>
+                        <button class="btn btn-sm btn-secondary">Last review</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Jimena Díaz</td>
+                    <td>13 Aug 2014</td>
+                    <td>251-661-5332</td>
+                    <td>20</td>
+                    <td>
+                      <div class="input-group">
+                        <button class="btn btn-sm btn-light">New appointment</button>
+                        <button class="btn btn-sm btn-secondary">Last review</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header">
+                <h4 class="my-0 fw-normal">New Case</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="my-2 fw-normal">Reason</h5>
+                <input type="text" class="form-control">
+                <hr class="featurette-divider">
+                <h5 class="my-2 fw-normal">Diagnosis</h5>
+                <textarea class="form-control" rows="8"></textarea>
+                <button class="btn btn-secondary">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

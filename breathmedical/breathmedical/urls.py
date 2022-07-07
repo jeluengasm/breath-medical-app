@@ -9,7 +9,7 @@ admin.site.site_title = admin_str
 
 urlpatterns = [
     path(
-        'app/',
+        '',
         include('app.urls')
     ),
 
