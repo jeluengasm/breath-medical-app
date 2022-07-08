@@ -130,4 +130,4 @@ dmypy.json
 
 breathmedical/static/
 breathmedical/uploads/
-breathmedical/app/processing/
+breathmedical/app/processing/data/Respiratory_Sound_Database/
