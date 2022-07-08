@@ -1,97 +1,53 @@
 {% extends 'app/base.html' %}
-{% load static %}
+{% load static widget_tweaks %}
 {% block content %}
 <div class="col-md-1"></div>
 <div class="col-md-10 col-lg-10">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">New audio</h1>
-  </div>
-  <div class="row">
-    <div class="col-md-5 col-lg-4 order-md-last">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Audio</span>
-        <hr>
-      </h4>
-      <hr class="featurette-divider">
-      <div class="mb-3 py-4">
-        <label class="form-label" for="customFile">Upload</label>
-        <input type="file" name="myAudio" accept="audio/wav" class="form-control" required>
-      </div>
+    <form class="needs-validation" method="post" enctype="multipart/form-data" validate>
+    <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">New audio</h1>
     </div>
-    <div class="col-md-7 col-lg-8">
-      <h4 class="mb-3">Complete information about record</h4>
-      <hr class="featurette-divider">
-      <form class="needs-validation" action="{{ BASE_DIR }}{% url 'app:home' %}" method="post" validate>
+    <div class="row">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Audio</span>
+          <hr>
+        </h4>
+        <hr class="featurette-divider">
+        <div class="mb-3 py-4">
+          {% render_field form.file class="form-control" %}
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Complete information about record</h4>
+        <hr class="featurette-divider">
+
+        {% csrf_token %}
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Instrument</label>
-            <select class="form-select" id="country" required>
-              <option value="">Select record instrument</option>
-              <option>Microphone (AKGC417L)</option>
-              <option>3M Littmann Classic II SE Stethoscope (LittC2SE)</option>
-              <option>3M Litmmann 3200 Electronic Stethoscope (Litt3200)</option>
-              <option>WelchAllyn Meditron Master Elite Electronic Stethoscope</option>
-            </select>
+            <label class="form-label" for="{{ form.instrument.name }}">{{ form.instrument.label }}</label>
+            {% render_field form.instrument class="form-select" %}
           </div>
           <div class="col-md-6">
-            <label class="form-label">Acquisition Mode</label>
-            <select class="form-select" id="country" required>
-              <option value="">Select ac</option>
-              <option>Sequential/single channel (sc)</option>
-              <option>Simultaneous/multichannel (mc)</option>
-            </select>
+            <label class="form-label" for="{{ form.mode.name }}">{{ form.mode.label }}</label>
+            {% render_field form.mode class="form-select" %}
           </div>
           <div class="col-md-6">
-            <label class="form-label">B (Recording index)</label>
-            <select class="form-select" id="country" required>
-              <option value="">Select b</option>
-              <option>1b1</option>
-              <option>1b2</option>
-              <option>2b5</option>
-              <option>2b4</option>
-              <option>2b3</option>
-              <option>2b2</option>
-              <option>2b1</option>
-              <option>1p1</option>
-              <option>1b3</option>
-              <option>2p2</option>
-              <option>1p5</option>
-              <option>1p2</option>
-              <option>1p3</option>
-              <option>2p3</option>
-              <option>2p4</option>
-              <option>3b2</option>
-              <option>3b4</option>
-              <option>4b2</option>
-              <option>1p4</option>
-              <option>7p5</option>
-            </select>
+            <label class="form-label" for="{{ form.chest_location.name }}">{{ form.chest_location.label }}</label>
+            {% render_field form.chest_location class="form-select" %}
           </div>
           <div class="col-md-6">
-            <label class="form-label">Ubication</label>
-            <select class="form-select" id="country" required>
-              <option value="">Select chest location</option>
-              <option>Trachea (Tc)</option>
-              <option>Anterior left (Al)</option>
-              <option>Anterior right (Ar)</option>
-              <option>Posterior left (Pl)</option>
-              <option>Posterior right (Pr)</option>
-              <option>Lateral left (Ll)</option>
-              <option>Lateral right (Lr)</option>
-            </select>
+            <label class="form-label" for="{{ form.comments.name }}">{{ form.comments.label }}</label><br>
+            {% render_field form.comments %}
           </div>
         </div>
         <hr class="featurette-divider">
         <div class="btn-group">
           <button class="w-150 btn btn-secondary" type="submit">Analize</button>
-          <form action="{{ BASE_DIR }}{% url 'app:home' %}" method="post">
-            <button class="btn btn-sm btn-secondary" type="submit">
-              Cancel
-            </button>
-          </form>
         </div>
-      </form>
+      </div>
+    </form>
     </div>
   </div>
-</div>
 {% endblock content %}

@@ -25,11 +25,6 @@ urlpatterns = [
         name='patient'
     ),
     path(
-        'patient/<int:id_patient>/analysis/<int:audio_id>/',
-        views.AudioAnalysisView.as_view(),
-        name='audio_analysis'
-    ),
-    path(
         'eda/',
         views.EDAView.as_view(),
         name='eda'
@@ -48,5 +43,10 @@ urlpatterns = [
         'medic/<int:medic_id>/history/<int:history_id>/new-audio/',
         views.NewAudioView.as_view(),
         name='new_audio'
+    ),
+        path(
+        'history/<int:history_id>/analysis/<int:audio_id>/',
+        views.AudioAnalysisView.as_view(),
+        name='audio_analysis'
     ),
 ]

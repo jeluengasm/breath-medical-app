@@ -127,6 +127,7 @@ class AudioAdmin(admin.ModelAdmin):
                         'mode',
                         'file',
                         'comments',
+                        'diagnosis'
                     ),
                 }
         ),

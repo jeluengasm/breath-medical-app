@@ -2,6 +2,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from app.models import Audio
 
 
 class UserRegisterform(UserCreationForm):
@@ -29,3 +30,16 @@ class UserRegisterform(UserCreationForm):
             'password1',
             'password2',
         )
+
+
+class CreateAudioForm(forms.ModelForm):
+    class Meta:
+        model = Audio
+        fields = (
+            'instrument',
+            'chest_location',
+            'mode',
+            'file',
+            'comments',
+        )
+
