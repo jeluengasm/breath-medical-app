@@ -29,27 +29,32 @@ https://drive.google.com/drive/folders/13Pec9kDipsa4OTe6VrEbgrJs5ntrnJbT?usp=sha
 http://breath-medical-app.herokuapp.com/admin
 ![image](https://user-images.githubusercontent.com/22754704/177916130-49044369-8321-4994-a235-d3b0e58ac637.png)
 
+![image](https://user-images.githubusercontent.com/22754704/177916180-7448ee98-5096-4dd9-9a92-514ce149d094.png)
+
+![image](https://user-images.githubusercontent.com/22754704/177916206-1d3d50aa-4a33-4cff-ab26-5373b73627c8.png)
+
+![image](https://user-images.githubusercontent.com/22754704/177916237-457aa9bd-33f6-43cb-890f-2a8f1e0cbdcc.png)
 
 
 ### Menú para ingreso de usuarios registrados:
 
 http://breath-medical-app.herokuapp.com/login/
 
+![image](https://user-images.githubusercontent.com/22754704/177916686-f97dc942-2907-4de6-bf94-aa8daa6e400e.png)
+
+
 ###Formulario de registro de usuarios nuevos (solo pacientes):
 
 http://breath-medical-app.herokuapp.com/register/
+
+![image](https://user-images.githubusercontent.com/22754704/177916697-64bdccca-3062-459e-aa98-c3cd5321206a.png)
+
 
 ### Página principal para vista del paciente:
 
 http://breath-medical-app.herokuapp.com/patient/<int:patient_id>/
 
 ![image](https://user-images.githubusercontent.com/22754704/177916056-19e028cf-f248-4048-8e0b-b7707642dc7e.png)
-
-![image](https://user-images.githubusercontent.com/22754704/177916180-7448ee98-5096-4dd9-9a92-514ce149d094.png)
-
-![image](https://user-images.githubusercontent.com/22754704/177916206-1d3d50aa-4a33-4cff-ab26-5373b73627c8.png)
-
-![image](https://user-images.githubusercontent.com/22754704/177916237-457aa9bd-33f6-43cb-890f-2a8f1e0cbdcc.png)
 
 
 ### Dashboard de los médicos que tienen credenciales de acceso a la plataforma
