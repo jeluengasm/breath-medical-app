@@ -177,9 +177,6 @@ class NewAudioView(CreateView):
         print("Loaded model from disk")
         print(loaded_model.summary())
 
-        # for i in range(10):
-            # audios =  Diagnosis(0, diag_dict[int(f[:3])], audio_path+f))   # diagnosis_data()[i].image_path
-
         Audioprueba = audio_features(file_path)
         y = np.expand_dims(Audioprueba, 0)
         z = np.expand_dims(y, -1)
