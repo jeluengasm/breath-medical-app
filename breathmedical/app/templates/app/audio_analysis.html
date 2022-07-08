@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-1"></div>
+<div class="col-md-10 col-lg-10">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Patient: {{ patient }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p class="lead"> Audio Analysis: {{ audio.audio_filename }}</p>
+    <h5 class="lead" style="text-align:center"> Taken: {{ audio.created_at }} </h5>
+    <div class="col-md-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">Spectre visualization</h5>
+          <img src="{% static 'images/filtradoej.png' %}" width="820" height="180">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">Cycle analysis</h5>
+          <img src="{% static 'images/ciclosej.png' %}" width="420" height="180">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="form-label">Diagnosis</h5>
+          <hr class="featture-divider">
+          <h1><b>{{ audio.diagnosis }}</b></h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Another :</th>
+            </tr>
+            <tr>
+              <th>Audio filename</th>
+              <th>Instrument</th>
+              <th>City</th>
+              <th>Chest location</th>
+              <th>Mode</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for file in history.audio_set.all %}
+                {% if file != audio %}
+                <tr>
+                  <td><a href="{% url 'app:home' %}"> {{ file.audio_filename }} </a></td>
+                  <td> {{ file.instrument }} </td>
+                  <td> {{ file.city }} </td>
+                  <td> {{ file.chest_location }} </td>
+                  <td> {{ file.mode }} </td>
+                  <th> {{ file.comments }} </th>
+                </tr>
+                {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

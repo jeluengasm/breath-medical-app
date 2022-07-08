@@ -1,292 +1,165 @@
+{% extends 'app/base.html' %}
 {% load static %}
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Patient information</title>
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- <link rel="canonical" href="#docs/5.0/examples/dashboard/"> -->
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-
-  <script src="{% static 'js/chart.js' %}"></script>
-  <link href="{% static 'css/principal.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
-</head>
-
-<body>
-
-  <header class="navbar sticky-top flex-md-nowrap p-0 shadow" style="color: white;background-color:(17, 20, 40)">
-    <a class="navbar-brand col-md-1" style="text-align:center;color: white" href="#"><img
-        src="{% static 'images/logo.jpg' %}" width="120" height="40"></a>
-
-    <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
-    <div class="dropdown">
-      <a href="#" style=" color:white;"
-        class="d-flex align-items-center justify-content-center p-3 link-white text-decoration-none dropdown-toggle"
-        id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-        User
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
+{% block content %}
+<div class="col-md-1"></div>
+<div class="col-md-10 col-lg-10">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Patient ID</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
     </div>
-  </header>
-
-  <div class="container-fluid">
-    <div class="row">
-      <main>
-        <div class="row">
-          <div class="col-md-1" id="sidebarMenu"
-            style="text-align:center;width: 4.5rem;background-color: rgb(37, 40, 80)">
-            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-              <li class="nav-item">
-                <a href="#" class="d-block p-3 link-white text-decoration-none" title="" data-bs-toggle="tooltip"
-                  data-bs-placement="right" data-bs-original-title="Icon-only">
-                  <div class="icon" style="color:white">
-                    <i class="bi bi-search"></i>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip"
-                  data-bs-placement="right" data-bs-original-title="Home">
-                  <div class="icon" style="color:white">
-                    <i class="bi bi-house-door-fill" aria-label="Dashboard">
-                      <use xlink:href="#speedometer2"></use>
-                    </i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                  data-bs-placement="right" data-bs-original-title="Dashboard">
-                  <div class="icon" style="color:white">
-                    <i class="bi bi-clipboard2-data-fill"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                  data-bs-placement="right" data-bs-original-title="Orders">
-                  <div class="icon" style="color:white">
-                    <i class="bi bi-clipboard-pulse"></i>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                  data-bs-placement="right" data-bs-original-title="Products">
-                  <div class="icon" style="color:white">
-                    <i class="bi bi-gear-fill"></i>
-                  </div>
-                </a>
-              </li>
-            </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h4 class="my-0 fw-normal">30</h4>
+          <p class="lead">AGE</p>
+          <div class="icon">
+            <i class="bi bi-gender-female"></i>
           </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-10 col-lg-10">
-            <div
-              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h2">Patient ID</h1>
-              <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="btn-group me-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                </div>
-              </div>
+          <p class="lead">SEX</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <svg class="bd-placeholder-img rounded-circle" width="70" height="70" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+          </svg>
+          <h4 class="my-0 fw-normal">JIMENA DÍAZ</h4>
+          <p class="lead">C.C 102039494</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h4 class="my-0 fw-normal">65 KG</h4>
+          <p class="lead">WEIGH</p>
+          <h4 class="my-0 fw-normal">170 CM</h4>
+          <p class="lead">HEIGH</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-0 fw-normal">MODEL PERFORMANCE</h5>
+          <div class="row">
+            <div class="col-md-8">
+              <p class="lead">87</p>
             </div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h4 class="my-0 fw-normal">30</h4>
-                    <p class="lead">AGE</p>
-                    <div class="icon">
-                      <i class="bi bi-gender-female"></i>
-                    </div>
-                    <p class="lead">SEX</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <svg class="bd-placeholder-img rounded-circle" width="70" height="70"
-                      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
-                      preserveAspectRatio="xMidYMid slice" focusable="false">
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                        dy=".3em">140x140</text>
-                    </svg>
-                    <h4 class="my-0 fw-normal">JIMENA DÍAZ</h4>
-                    <p class="lead">C.C 102039494</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h4 class="my-0 fw-normal">65 KG</h4>
-                    <p class="lead">WEIGH</p>
-                    <h4 class="my-0 fw-normal">170 CM</h4>
-                    <p class="lead">HEIGH</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-0 fw-normal">MODEL PERFORMANCE</h5>
-                    <div class="row">
-                      <div class="col-md-8">
-                        <p class="lead">87</p>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="icon">
-                          <i class="bi bi-percent"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-2 fw-normal">UPLOAD NEW AUDIO</h5>
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h6>Wav format</h6>
-                      </div>
-                      <div class="col-md-4">
-                        <form action="{{ BASE_DIR }}{% url 'app:home' %}" method="post">
-                          {% csrf_token %}
-                          <button class="btn btn-sm btn-secondary" type="submit">
-                            <div class="icon">
-                              <i class="bi bi-upload"></i>
-                            </div>
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-0 fw-normal">DIAGNOSIS</h5>
-                    <div class="row">
-                      <div class="col-md-8">
-                        <p class="lead">Healthy</p>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="icon">
-                          <i class="bi bi-postcard-heart"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-2 fw-normal">SIGNAL FILTERING RESULT</h5>
-                    <img src="{% static 'images/filtradoej.png' %}" width="820" height="180">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-2 fw-normal">PRINCIPAL RESPIRATORY CYCLES</h5>
-                    <img src="{% static 'images/ciclosej.png' %}" width="420" height="180">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body" style="text-align: center">
-                    <h5 class="my-0 fw-normal">CYCLES</h5>
-                    <canvas id="pietypecycle" width="180" height="180"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                </div>
-                <div class="col-md-6">
-                  <div class="table-responsive">
-                    <table class="table table-sm">
-                      <thead>
-                        <tr>
-                          <th>ABOUT AUDIO</th>
-                        </tr>
-                        <tr>
-                          <th>Acquisition mode</th>
-                          <th>Reference Device</th>
-                          <th>Duration</th>
-                          <th>Ubication</th>
-                          <th>b</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>sc</td>
-                          <td>Meditron</td>
-                          <td>2:12</td>
-                          <td>Al</td>
-                          <td>1b1</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <div class="col-md-4">
+              <div class="icon">
+                <i class="bi bi-percent"></i>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">UPLOAD NEW AUDIO</h5>
+          <div class="row">
+            <div class="col-md-8">
+              <h6>Wav format</h6>
+            </div>
+            <div class="col-md-4">
+              <form action="{{ BASE_DIR }}{% url 'app:home' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-secondary" type="submit">
+                  <div class="icon">
+                    <i class="bi bi-upload"></i>
+                  </div>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-0 fw-normal">DIAGNOSIS</h5>
+          <div class="row">
+            <div class="col-md-8">
+              <p class="lead">Healthy</p>
+            </div>
+            <div class="col-md-4">
+              <div class="icon">
+                <i class="bi bi-postcard-heart"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">SIGNAL FILTERING RESULT</h5>
+          <img src="{% static 'images/filtradoej.png' %}" width="820" height="180">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-2 fw-normal">PRINCIPAL RESPIRATORY CYCLES</h5>
+          <img src="{% static 'images/ciclosej.png' %}" width="420" height="180">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body" style="text-align: center">
+          <h5 class="my-0 fw-normal">CYCLES</h5>
+          <canvas id="pietypecycle" width="180" height="180"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>ABOUT AUDIO</th>
+              </tr>
+              <tr>
+                <th>Acquisition mode</th>
+                <th>Reference Device</th>
+                <th>Duration</th>
+                <th>Ubication</th>
+                <th>b</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>sc</td>
+                <td>Meditron</td>
+                <td>2:12</td>
+                <td>Al</td>
+                <td>1b1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2022 BREATHE</p>
-  </footer>
-  <script>
-    var Pietipofallac = document.getElementById("pietypecycle").getContext("2d");
-    var chart3 = new Chart(Pietipofallac, {
-      type: "pie",
-      data: {
-        labels: ['Normal', 'Wheeze', 'Crackle'],
-        datasets: [{
-          label: "Cycle",
-          data: [2, 4, 5],
-          backgroundColor: ['rgb(255,225,53)', 'rgb(139,0,0)', 'rgb(244,70,17)'],
-          hoverOffset: 2
-        }]
-      }
-    });
-  </script>
-  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-</body>
-</html>
+</div>
+{% endblock content %}

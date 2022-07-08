@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load static widget_tweaks %}
+{% block content %}
+<div class="col-md-1"></div>
+<div class="col-md-10 col-lg-10">
+    <form class="needs-validation" method="post" enctype="multipart/form-data" validate>
+    <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">New audio</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Audio</span>
+          <hr>
+        </h4>
+        <hr class="featurette-divider">
+        <div class="mb-3 py-4">
+          {% render_field form.file class="form-control" %}
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Complete information about record</h4>
+        <hr class="featurette-divider">
+
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="{{ form.instrument.name }}">{{ form.instrument.label }}</label>
+            {% render_field form.instrument class="form-select" %}
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="{{ form.mode.name }}">{{ form.mode.label }}</label>
+            {% render_field form.mode class="form-select" %}
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="{{ form.chest_location.name }}">{{ form.chest_location.label }}</label>
+            {% render_field form.chest_location class="form-select" %}
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="{{ form.comments.name }}">{{ form.comments.label }}</label><br>
+            {% render_field form.comments %}
+          </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="btn-group">
+          <button class="w-150 btn btn-secondary" type="submit">Analize</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+{% endblock content %}

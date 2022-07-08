@@ -162,7 +162,15 @@ class Audio(models.Model):
         max_length=15,
     )
 
-    mode = models.CharField(max_length=20, blank=True, verbose_name='mode') #TODO
+    mode = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name='mode',
+        choices=(
+            ('sc', 'Sequential/Single channel (sc)'),
+            ('mc', 'Simultaneus/Multi-channel (mc)'),
+        )
+    )
 
     comments = models.TextField(max_length=255, blank=True, verbose_name='comments')
 
@@ -177,6 +185,17 @@ class Audio(models.Model):
         upload_to='audio/%Y/%m/%d/',
         max_length=2000, #TODO
         verbose_name='audio file',
+        blank=True,
+    )
+
+    created_at = models.DateTimeField(
+        verbose_name='created at',
+        default=timezone.now,
+    )
+
+    diagnosis = models.CharField(
+        max_length=100,
+        verbose_name='diagnosis',
         blank=True,
     )
 

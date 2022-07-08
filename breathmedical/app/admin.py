@@ -91,7 +91,9 @@ class HospitalAdmin(admin.ModelAdmin):
 
 @admin.register(MedicalArea)
 class MedicalAreaAdmin(admin.ModelAdmin):
-    pass
+    search_fields = (
+        'title',
+    )
 
 
 @admin.register(Audio)
@@ -125,6 +127,7 @@ class AudioAdmin(admin.ModelAdmin):
                         'mode',
                         'file',
                         'comments',
+                        'diagnosis'
                     ),
                 }
         ),
@@ -134,9 +137,9 @@ class AudioAdmin(admin.ModelAdmin):
         'user_history',
     )
 
-    search_fields = (
-        'user_history',
-    )
+    # search_fields = (
+    #     'user_history',
+    # )
 
 
     # def has_add_permission(self, request):
@@ -195,9 +198,9 @@ class CycleAdmin(admin.ModelAdmin):
     #     'avg_spectre',
     # )
 
-    search_fields = (
-        'audio',
-    )
+    # search_fields = (
+    #     'audio',
+    # )
 
     # def has_add_permission(self, request):
     #     return False
@@ -243,10 +246,10 @@ class UserHistoryAdmin(admin.ModelAdmin):
         'created_at',
     )
 
-    search_fields = (
-        'patient',
-        'doctor',
-    )
+    # search_fields = (
+    #     'patient__name',
+    #     'doctor',
+    # )
 
     inlines = (AudioInline,)
 
