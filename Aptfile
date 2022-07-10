@@ -1,6 +1,3 @@
-libsndfile
+libsndfile1
 libsndfile-dev
-libsndfile1-dev
 libasound2-dev 
-python-setuptools
-
