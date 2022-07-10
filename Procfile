@@ -1,1 +1,1 @@
-web: gunicorn breathmedical.breathmedical.wsgi --log-file -
+web: gunicorn breathmedical.wsgi --log-file -

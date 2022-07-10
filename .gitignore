@@ -128,6 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-breathmedical/static/
-breathmedical/uploads/
-breathmedical/app/processing/data/Respiratory_Sound_Database/
+static/
+uploads/
+app/processing/data/Respiratory_Sound_Database/
